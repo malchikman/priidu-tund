@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace App2 {
+namespace fb_rip {
     class post : BaseAdapter<TableItem> {
         List<TableItem> items;
         Activity context;
@@ -39,25 +39,48 @@ namespace App2 {
         public override View GetView(int position, View convertView, ViewGroup parent) {
             var item = items[position];
             View view = convertView; // re-use an existing view, if one is available
-            //if (view == null) // otherwise create a new one
+            if (view == null) { // otherwise create a new one
+                if (item.iscommenting == true)
+                    view = context.LayoutInflater.Inflate(Resource.Layout.postc, null);
+                else if (item.comments.Count != 0)
+                    view = context.LayoutInflater.Inflate(Resource.Layout.postcd, null);
+                else
+                    view = context.LayoutInflater.Inflate(Resource.Layout.post, null);
 
-            if (item.iscommenting == true)
-                view = context.LayoutInflater.Inflate(Resource.Layout.postc, null);
-            else
-                view = context.LayoutInflater.Inflate(Resource.Layout.post, null);
+                ImageView root_user_image = view.FindViewById<ImageView>(Resource.Id.root_user_image);
+                TextView root_user_name = view.FindViewById<TextView>(Resource.Id.root_user_name);
+                TextView root_user_text = view.FindViewById<TextView>(Resource.Id.root_user_text);
+                ListView lv_comments = view.FindViewById<ListView>(Resource.Id.lv_comments);
+                Button btn_comment = view.FindViewById<Button>(Resource.Id.btn_comment);
+                Button btn_submit_comment = view.FindViewById<Button>(Resource.Id.btn_submit_comment);
+                EditText ed_user_comment = view.FindViewById<EditText>(Resource.Id.ed_user_comment);
 
-            ImageView root_user_image = view.FindViewById<ImageView>(Resource.Id.root_user_image);
-            TextView root_user_name = view.FindViewById<TextView>(Resource.Id.root_user_name);
-            TextView root_user_text = view.FindViewById<TextView>(Resource.Id.root_user_text);
-            TextView btn_comment = view.FindViewById<TextView>(Resource.Id.btn_comment);
+                root_user_image.SetImageResource(item.img);
+                root_user_name.Text = item.name;
+                root_user_text.Text = item.text;
 
-            root_user_image.SetImageResource(item.img);
-            root_user_name.Text = item.name;
-            root_user_text.Text = item.text;
+                if (ed_user_comment != null)
+                    ed_user_comment.Text = "Enter comment";
 
-            btn_comment.Click += delegate {
-                items[position].iscommenting = true;
-            };
+                if (lv_comments != null) {
+                    lv_comments.Adapter = new comment(context, item.comments);
+                }
+
+                btn_comment.Click += delegate {
+                    item.iscommenting = !item.iscommenting;
+
+                    glob.listView.Adapter = new post(context, items);
+                };
+
+                if (btn_submit_comment != null) {
+                    btn_submit_comment.Click += delegate {
+                        item.comments.Add(ed_user_comment.Text);
+                        item.iscommenting = false;
+
+                        glob.listView.Adapter = new post(context, items);
+                    };
+                }
+            }
 
             return view;
         }

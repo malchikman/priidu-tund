@@ -7,15 +7,12 @@ using Android.Widget;
 using Android.OS;
 using System.Collections.Generic;
 
-namespace App2
-{
-    [Activity(Label = "App2", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
-    {
+namespace fb_rip {
+    [Activity(Label = "fb_rip", MainLauncher = true, Icon = "@drawable/icon")]
+    public class MainActivity : Activity {
         List<TableItem> tableItems = new List<TableItem>();
 
-        protected override void OnCreate(Bundle bundle)
-        {
+        protected override void OnCreate(Bundle bundle) {
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
@@ -34,14 +31,14 @@ namespace App2
             root_user_name.Text = "Aaron Kyro";
             */
 
-            ListView listView = FindViewById<ListView>(Resource.Id.lv_posts);
+            glob.listView = FindViewById<ExpandableListView>(Resource.Id.lv_posts);
 
             tableItems.Add(new TableItem() { img = Resource.Drawable.aronike, name = "Aaron Kyro", text = "postituse sisu", iscommenting = false });
             tableItems.Add(new TableItem() { img = Resource.Drawable.aronike, name = "Aaron Kyro", text = "postituse sisu", iscommenting = false });
 
-            listView.Adapter = new post(this, tableItems);
+            glob.listView.SetAdapter(new post(this, tableItems));
             
-
+            
             //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
         }
     }
