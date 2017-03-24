@@ -14,7 +14,7 @@ namespace fb_rip {
     class post : BaseAdapter<TableItem> {
         List<TableItem> items;
         Activity context;
-
+        int lv_comment_height = 0;
 
         public post(Activity context, List<TableItem> items) : base() {
             this.context = context;
@@ -63,6 +63,12 @@ namespace fb_rip {
                     ed_user_comment.Text = "Enter comment";
 
                 if (lv_comments != null) {
+                    //if (lv_comment_height == 0)
+                    //    lv_comment_height = lv_comments.Height;
+
+                    //Android.Widget.Toast.MakeText(context, lv_comments.Height + "", Android.Widget.ToastLength.Short).Show();
+
+                    lv_comments.LayoutParameters.Height = 30 * item.comments.Count;
                     lv_comments.Adapter = new comment(context, item.comments);
                 }
 

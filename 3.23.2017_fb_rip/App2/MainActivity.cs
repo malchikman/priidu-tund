@@ -31,7 +31,7 @@ namespace fb_rip {
             root_user_name.Text = "Aaron Kyro";
             */
 
-            glob.listView = FindViewById<ExpandableListView>(Resource.Id.lv_posts);
+            glob.listView = FindViewById<ListView>(Resource.Id.lv_posts);
 
             tableItems.Add(new TableItem() { img = Resource.Drawable.aronike, name = "Aaron Kyro", text = "postituse sisu", iscommenting = false });
             tableItems.Add(new TableItem() { img = Resource.Drawable.aronike, name = "Aaron Kyro", text = "postituse sisu", iscommenting = false });

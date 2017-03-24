@@ -42,7 +42,7 @@ namespace fb_rip {
             if (view == null) // otherwise create a new one
                 view = context.LayoutInflater.Inflate(Resource.Layout.comment, null);
 
-            Android.Widget.Toast.MakeText(context, items.Count + "", Android.Widget.ToastLength.Short).Show();
+            //Android.Widget.Toast.MakeText(context, items.Count + "", Android.Widget.ToastLength.Short).Show();
 
             TextView root_user_comment = view.FindViewById<TextView>(Resource.Id.root_user_comment);
 
