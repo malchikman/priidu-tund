@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff5f5f5">
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:id="@+id/top">
+      <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_use_info">
+      <LinearLayout
+          android:orientation="vertical"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:id="@+id/top_left_user_image"
+          android:minHeight="100dp"
+          android:minWidth="100dp">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="8dp"
+              android:adjustViewBounds="true"
+              android:minHeight="100dp"
+              android:minWidth="100dp"
+              android:maxHeight="100dp"
+              android:maxWidth="100dp"
+              android:src="@drawable/aronike"
+              android:id="@+id/root_user_image" />
+          <ImageView
+              android:src="@drawable/rounded_frame"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" />
+        </FrameLayout>
+      </LinearLayout>
+      <LinearLayout
+          android:orientation="vertical"
+          android:minWidth="25px"
+          android:minHeight="25px"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:id="@+id/top_right_user_info">
+        <TextView
+            android:text="root user name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:textColor="#ff777777"
+            android:id="@+id/root_user_name" />
+        <TextView
+            android:text="root user text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:textColor="#ff111111"
+            android:id="@+id/root_user_text" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/bottom">
+      <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout1">
+        <Button
+            android:text="Like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/btn_like" />
+        <Button
+            android:text="Comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:id="@+id/btn_comment" />
+      </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/next_bottom"
+      android:background="@drawable/custom_border">
+      <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lv_comments" />
+      <EditText
+        android:text="root user comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:textColor="#ff111111"
+        android:id="@+id/ed_user_comment" />
+      <Button
+        android:text="Submit comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/btn_submit_comment" />
+    </LinearLayout>
+  </LinearLayout>
+</RelativeLayout>
